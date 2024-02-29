@@ -22,6 +22,7 @@ import Footer from '~/components/Footer.vue'
 
 .header-wrap {
   @apply sticky top-0 left-0 z-50;
+  @apply shadow-2xl;
 }
 </style>
 

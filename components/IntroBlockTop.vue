@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="section-container">
     <div class="wrapper">
       <div class="text">
         <div class="text--title">
@@ -24,19 +24,20 @@ import Image from '~/assets/images/Truck, Train, Plane.png'
 
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 
-.container {
-  @apply w-[100vw];
+.section-container {
+  @apply w-full shadow-2xl;
 
   .wrapper {
     @apply relative;
 
     .text {
-      @apply absolute top-52 left-10;
-      @apply w-80;
-      @apply text-primary;
-      @apply backdrop-blur rounded shadow-2xl;
+      @apply absolute bottom-8 right-60;
+      @apply w-4/12;
+      @apply pb-5 px-5;
+      @apply text-secondary;
+      @apply rounded bg-white/80 backdrop-blur;
 
       &--title {
         @apply text-4xl;
@@ -51,7 +52,7 @@ import Image from '~/assets/images/Truck, Train, Plane.png'
       @apply z-0;
 
       img {
-        //@apply rounded;
+        @apply rounded mx-auto;
       }
     }
   }
