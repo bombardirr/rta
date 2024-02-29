@@ -7,8 +7,8 @@
       </NuxtLink>
 
       <div class="rate-lang-container">
-        <div class="currency-rate">Курс валют</div>
-
+        <div class="currency-rate">Доллар: {{ (1 / currency.rates.USD).toFixed(2) }} РУБ</div>
+        <div class="currency-rate">Юань: {{ (1 / currency.rates.CNY).toFixed(2) }} РУБ</div>
         <nav class="lang-items">
           <NuxtLink
             v-for="langItem in langItems"
@@ -97,7 +97,6 @@ import LogoRu from '~/assets/icons/ru.svg?component'
 
 const mobileMenuOpen = ref(false)
 
-
 const toggleMobileMenu = () => {
   mobileMenuOpen.value = !mobileMenuOpen.value
 }
@@ -119,6 +118,8 @@ const langItems = ref([
 const activeRoute = (path: string): boolean => {
   return useRoute().path.split('/').includes(path.slice(1).replace('/', ''))
 }
+
+const currency = await fetch(`https://www.cbr-xml-daily.ru/latest.js`).then(r => r.json())
 </script>
 
 <style lang="scss">
