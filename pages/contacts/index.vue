@@ -4,6 +4,8 @@
 
 <script setup lang="ts">
 
+definePageMeta({ layout: 'map-layout' })
+
 </script>
 
 <style lang="scss">
