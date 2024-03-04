@@ -1,5 +1,6 @@
 <template>
   <div class="relative">
+    <YaMap />
     <div class="header-wrap">
       <Header />
     </div>
@@ -12,6 +13,7 @@
 
 <script setup lang="ts">
 import Header from '~/components/Header.vue'
+import YaMap from '~/components/YaMap.vue'
 
 </script>
 

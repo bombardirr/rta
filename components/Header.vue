@@ -7,8 +7,10 @@
       </NuxtLink>
 
       <div class="rate-lang-container">
-        <div class="currency-rate">Доллар: {{ (1 / currency.rates.USD).toFixed(2) }} РУБ</div>
-        <div class="currency-rate">Юань: {{ (1 / currency.rates.CNY).toFixed(2) }} РУБ</div>
+        <client-only>
+          <div class="currency-rate">Доллар: {{ (1 / currency.rates.USD).toFixed(2) }} РУБ</div>
+          <div class="currency-rate">Юань: {{ (1 / currency.rates.CNY).toFixed(2) }} РУБ</div>
+        </client-only>
         <nav class="lang-items">
           <NuxtLink
             v-for="langItem in langItems"
