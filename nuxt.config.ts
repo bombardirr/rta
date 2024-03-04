@@ -7,4 +7,7 @@ export default defineNuxtConfig({
     },
   },
   devtools: { enabled: true },
+  plugins: [
+    { src: '~/plugins/maps', mode: 'client' },
+  ],
 })
