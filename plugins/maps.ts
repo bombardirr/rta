@@ -3,11 +3,11 @@ import plugin from 'vue-yandex-maps'
 
 
 const settings = {
-  apiKey: 'твой ключик', // Индивидуальный ключ API
-  // lang: 'ru_RU', // Используемый язык
-  // coordorder: 'latlong', // Порядок задания географических координат
-  // debug: false, // Режим отладки
-  // version: '2.1' // Версия Я.Карт
+  apiKey: '', // Индивидуальный ключ API
+  lang: 'ru_RU', // Используемый язык
+  coordorder: 'latlong', // Порядок задания географических координат
+  debug: false, // Режим отладки
+  version: '2.1', // Версия Я.Карт
 }
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(plugin, settings)
