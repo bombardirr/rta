@@ -11,12 +11,10 @@
       :detailed-controls="mapSettings.detailedControls"
       :controls="mapSettings.controls"
       :zoom="mapSettings.zoom"
-      map-type="map"
     >
       <YandexMarker
         marker-id="marker"
         :coordinates="markerSettings.markerCoordinates"
-        :type="markerSettings.type"
       />
     </YandexMap>
   </client-only>
@@ -35,10 +33,7 @@ const mapSettings = {
 
 const markerSettings = {
   markerCoordinates: [59.849930, 30.303931],
-  type: 'Point',
 }
-
-const name = ref('Custom')
 
 </script>
 

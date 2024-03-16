@@ -3,7 +3,10 @@
 
 <script setup lang="ts">
 
-definePageMeta({ layout: 'map-layout' })
+definePageMeta({
+  layout: 'map-layout',
+  pageTransition: false,
+})
 
 </script>
 
@@ -12,8 +15,5 @@ definePageMeta({ layout: 'map-layout' })
   @apply fixed;
   @apply top-0 left-0 right-0 bottom-0 -z-50;
   @apply h-[100svh];
-}
-
-.mapLayout-content {
 }
 </style>

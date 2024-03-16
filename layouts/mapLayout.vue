@@ -5,15 +5,15 @@
       <Header />
     </div>
 
-    <div class="container mx-auto mt-5">
+    <div class="mapLayout-content">
       <slot />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import Header from '~/components/Header.vue'
 import YaMap from '~/components/YaMap.vue'
+import Header from '~/components/Header.vue'
 
 </script>
 

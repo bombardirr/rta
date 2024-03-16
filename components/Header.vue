@@ -7,10 +7,11 @@
       </NuxtLink>
 
       <div class="rate-lang-container">
-        <client-only>
-          <div class="currency-rate">Доллар: {{ (1 / currency.rates.USD).toFixed(2) }} РУБ</div>
-          <div class="currency-rate">Юань: {{ (1 / currency.rates.CNY).toFixed(2) }} РУБ</div>
-        </client-only>
+        <div class="currency-rate">Доллар: {{ (currency.Valute.USD.Value).toFixed(2) }}
+          РУБ
+        </div>
+        <div class="currency-rate">Юань: {{ (currency.Valute.CNY.Value).toFixed(2) }} РУБ
+        </div>
         <nav class="lang-items">
           <NuxtLink
             v-for="langItem in langItems"
@@ -121,7 +122,11 @@ const activeRoute = (path: string): boolean => {
   return useRoute().path.split('/').includes(path.slice(1).replace('/', ''))
 }
 
-const currency = await fetch(`https://www.cbr-xml-daily.ru/latest.js`).then(r => r.json())
+const { data: currency } = await useAsyncData(async () => {
+  const res = await fetch('https://www.cbr-xml-daily.ru/daily_json.js')
+  return res.json()
+})
+
 </script>
 
 <style lang="scss">
