@@ -20,12 +20,12 @@ module.exports = {
         dark: '#6B7280',
         accent: '#0f1d15',
       },
-      //     backgroundColor: {
-      //       primary: '#E3E9FF',
-      //       secondary: '#F4F4F4',
-      //       dark: '#262626',
-      //       accent: '#294CE2'
-      //     },
+      backgroundColor: {
+        primary: '#fff',
+        secondary: '#4c956c',
+        //       dark: '#262626',
+        //       accent: '#294CE2'
+      },
       borderRadius: { DEFAULT: '15px' },
     },
   },
