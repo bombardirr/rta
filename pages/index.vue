@@ -1,12 +1,13 @@
 <template>
-  <IntroBlockTop />
-  <!--  <IntroBlockMid />-->
+  <MainBlockA />
+  <MainBlockB />
 </template>
 
 <script setup lang="ts">
 
-import IntroBlockTop from '~/components/IntroBlockTop.vue'
-import IntroBlockMid from '~/components/IntroBlockMid.vue'
+import MainBlockA from '~/components/MainBlockA.vue'
+import MainBlockB from '~/components/MainBlockB.vue'
+
 </script>
 
 <style lang="scss">
