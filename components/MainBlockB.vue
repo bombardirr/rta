@@ -40,9 +40,9 @@ import Image from '~/assets/images/Truck, Train, Plane.png'
 <style scoped lang="scss">
 
 .b-container {
-  @apply bg-secondary;
-  @apply mt-10;
-  @apply text-primary text-xl;
+  @apply bg-sec;
+  @apply my-5;
+  @apply text-prime text-xl;
 
   .section-top {
     @apply w-full;

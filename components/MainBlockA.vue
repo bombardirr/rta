@@ -52,16 +52,16 @@ import Image from '~/assets/images/ship left.jpg'
 
 .a-container {
   @apply flex flex-col justify-evenly items-center;
-  @apply mt-5;
+  @apply my-5;
 
   .section-top {
     @apply flex justify-between items-center;
     @apply h-[80svh];
-    @apply bg-secondary;
+    @apply bg-sec;
 
     .top-text {
       @apply flex flex-col justify-evenly items-start gap-4;
-      @apply text-primary;
+      @apply text-prime;
       @apply px-20;
 
       h1 {
@@ -86,8 +86,8 @@ import Image from '~/assets/images/ship left.jpg'
   .section-bot {
     @apply w-full;
     @apply px-10 pt-10;
-    @apply bg-primary;
-    @apply text-secondary;
+    @apply bg-prime;
+    @apply text-sec;
 
     .bot-container {
       @apply flex flex-col justify-evenly items-start;
