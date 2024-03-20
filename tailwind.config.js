@@ -15,16 +15,17 @@ module.exports = {
         xs: '500px',
       },
       textColor: {
-        primary: '#ffffff',
-        secondary: '#4c956c',
-        dark: '#6B7280',
-        accent: '#0f1d15',
+        prime: '#ffffff',
+        sec: '#4c956c',
+        act: '#2d3142',
+        dk: '#6B7280',
+        acc: '#0f1d15',
       },
       backgroundColor: {
-        primary: '#fff',
-        secondary: '#4c956c',
-        //       dark: '#262626',
-        //       accent: '#294CE2'
+        prime: '#fff',
+        sec: '#4c956c',
+        //       dk: '#262626',
+        //       acc: '#294CE2'
       },
       borderRadius: { DEFAULT: '15px' },
     },

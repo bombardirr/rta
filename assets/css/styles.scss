@@ -1,27 +1,7 @@
-//@import "../font/stylesheet.css";
-
 @layer tailwind-base, primevue, tailwind-utilities;
 
 @layer tailwind-base {
   @tailwind base;
-
-  //html {
-  //  font-family: Formular, serif;
-  //  @apply font-normal text-sm xl:text-base;
-  //}
-  //button.button-icon {
-  //  padding: 0.75rem 0.75rem!important;
-  //}
-  //a {
-  //  @apply font-medium transition-colors hover:text-accent;
-  //
-  //  &.active {
-  //    @apply text-accent;
-  //  }
-  //}
-  //  ol.p-breadcrumb-list li {
-  //    display: inline-block;
-  //  }
 }
 
 @layer tailwind-utilities {

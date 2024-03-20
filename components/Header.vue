@@ -5,7 +5,18 @@
       <NuxtLink to="/">
         <LogoRu class="logo" />
       </NuxtLink>
-
+      <!--Кнопка для звонка-->
+      <a href="tel:'+7-812-740-34-44'">
+        <MainButton
+          class="call-button"
+          v-for="setting in buttonSettings"
+          :key="setting.label"
+          :label="setting.label"
+          :raised="setting.raised"
+          :icon="setting.icon"
+        />
+      </a>
+      <!--Выбор языка-->
       <div class="rate-lang-container">
         <div class="currency-rate">Доллар: {{ (currency.Valute.USD.Value).toFixed(2) }}
           РУБ
@@ -13,16 +24,7 @@
         <div class="currency-rate">Юань: {{ (currency.Valute.CNY.Value).toFixed(2) }} РУБ
         </div>
         <nav class="lang-items">
-          <NuxtLink
-            v-for="langItem in langItems"
-            :key="langItem.name"
-            :to="langItem.to"
-            :class="[
-              activeRoute(langItem.to) ? 'text-accent' : 'hover:text-accent',
-            ]"
-          >
-            {{ langItem.name }}
-          </NuxtLink>
+          <LangSelect />
         </nav>
 
         <!--      Кнопка мобильного меню-->
@@ -45,14 +47,15 @@
       <!-- Основные элементы меню для десктопа -->
       <nav class="nav-items">
         <NuxtLink
+          class="group transition duration-300"
           v-for="navItem in navItems"
           :key="navItem.name"
           :to="navItem.to"
-          :class="[
-              activeRoute(navItem.to) ? 'text-accent' : 'hover:text-accent',
-            ]"
+          :class="{ 'text-act': activeRoute(navItem.to) }"
         >
+          <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-prime"></span>
           {{ navItem.name }}
+          <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-prime"></span>
         </NuxtLink>
       </nav>
     </div>
@@ -65,7 +68,7 @@
             v-for="navItem in navItems"
             :key="navItem.name"
             :class="[
-                activeRoute(navItem.to) ? 'text-accent' : 'hover:text-accent',
+                activeRoute(navItem.to) ? 'text-acc' : 'hover:text-acc',
               ]"
             @click="mobileMenuOpen = !mobileMenuOpen"
           >
@@ -76,16 +79,7 @@
         </ul>
 
         <nav class="mobile-menu-lang-items">
-          <NuxtLink
-            v-for="langItem in langItems"
-            :key="langItem.name"
-            :to="langItem.to"
-            :class="[
-              activeRoute(langItem.to) ? 'text-accent' : 'hover:text-accent',
-            ]"
-          >
-            {{ langItem.name }}
-          </NuxtLink>
+          <LangSelect />
         </nav>
 
       </nav>
@@ -97,6 +91,7 @@
 import MenuIcon from '~/assets/icons/menu.svg?component'
 import CloseIcon from '~/assets/icons/close.svg?component'
 import LogoRu from '~/assets/icons/ru.svg?component'
+import MainButton from '~/components/MainButton.vue'
 
 const mobileMenuOpen = ref(false)
 
@@ -113,11 +108,10 @@ const navItems = ref([
   { name: 'Контакты', to: '/contacts' },
 ])
 
-const langItems = ref([
-  { name: 'RU', to: '/services' },
-  { name: 'EN', to: '/features' },
-  { name: '中文', to: '/info' },
-])
+const buttonSettings = ref([
+    { label: 'Горячая линия', raised: true, icon: 'pi pi-phone' },
+  ],
+)
 const activeRoute = (path: string): boolean => {
   return useRoute().path.split('/').includes(path.slice(1).replace('/', ''))
 }
@@ -140,7 +134,19 @@ const { data: currency } = await useAsyncData(async () => {
     @apply bg-[#F0F0F0];
 
     .logo {
-      @apply w-60;
+      @apply w-48;
+    }
+
+    .call-button {
+      @apply h-8;
+      @apply px-2 py-0 ml-5;
+      @apply rounded-none bg-sec border-none;
+      @apply text-sm text-prime text-nowrap;
+      @apply hover:border-[#4c956c] hover:bg-prime hover:text-sec;
+
+      & > span {
+        @apply align-middle;
+      }
     }
 
     .rate-lang-container {
@@ -169,7 +175,7 @@ const { data: currency } = await useAsyncData(async () => {
   }
 
   .nav-content-bot {
-    @apply px-10;
+    @apply px-10 py-2;
     @apply bg-[#4c956c];
 
     .nav-items {
@@ -178,7 +184,7 @@ const { data: currency } = await useAsyncData(async () => {
       @media (min-width: 768px) {
         @apply flex justify-start gap-10 items-center;
         @apply w-full;
-        @apply text-primary;
+        @apply text-prime;
       }
     }
   }
@@ -188,7 +194,7 @@ const { data: currency } = await useAsyncData(async () => {
     @apply absolute left-0 right-0 top-full;
     @apply bg-[#4c956c] backdrop-blur;
     @apply pb-6 pt-6;
-    @apply text-primary;
+    @apply text-prime;
 
     @media (max-width: 768px) {
       @apply flex flex-col items-center gap-6;
@@ -218,7 +224,7 @@ const { data: currency } = await useAsyncData(async () => {
 
   .mobile-menu-lang-items {
     @apply flex justify-evenly items-center gap-2 xs:hidden;
-    @apply text-primary;
+    @apply text-prime;
   }
 }
 
