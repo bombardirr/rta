@@ -18,10 +18,10 @@
       </a>
       <!--Выбор языка-->
       <div class="rate-lang-container">
-        <div class="currency-rate">Доллар: {{ (currency.Valute.USD.Value).toFixed(2) }}
+        <div class="currency-rate">&#36;: {{ (currency.Valute.USD.Value).toFixed(2) }}
           РУБ
         </div>
-        <div class="currency-rate">Юань: {{ (currency.Valute.CNY.Value).toFixed(2) }} РУБ
+        <div class="currency-rate">&#165;: {{ (currency.Valute.CNY.Value).toFixed(2) }} РУБ
         </div>
         <nav class="lang-items">
           <LangSelect />
@@ -106,7 +106,6 @@ const navItems = ref([
   // { name: 'Домой', to: '/' },
   { name: 'menu_about', to: '/about' },
   { name: 'menu_services', to: '/services' },
-  { name: 'menu_features', to: '/features' },
   { name: 'menu_info', to: '/info' },
   { name: 'menu_contacts', to: '/contacts' },
 ])
@@ -133,11 +132,18 @@ const { data: currency } = await useAsyncData(async () => {
 
   .nav-content-top {
     @apply flex justify-between items-center;
-    @apply px-5 sm:px-10;
+    @apply px-5 py-5 sm:px-10;
     @apply bg-[#F0F0F0];
 
     .logo {
       @apply w-48;
+      @apply transform -translate-y-0.5;
+      @apply shadow-xl shadow-black/60;
+      @apply transition-all ease-in-out rounded-md;
+      &:hover {
+        @apply transform translate-y-0.5;
+        @apply shadow shadow-black/10;
+      }
     }
 
     .call-button {
