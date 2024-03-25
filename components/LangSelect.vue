@@ -1,5 +1,5 @@
 <template>
-  <select v-model="chosenLanguage">
+  <select v-model="chosenLanguage" class="lang-container">
     <option
       v-for="locale in locales"
       :key="locale.code"
@@ -22,11 +22,15 @@ const chosenLanguage = computed({
     setLocale(value)
   },
 })
+
 const switchLocalePath = useSwitchLocalePath()
 const { locales, locale, setLocale } = useI18n()
 
 </script>
 
 <style lang="scss">
+.lang-container {
+  @apply bg-[#F0F0F0];
+}
 
 </style>

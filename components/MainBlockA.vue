@@ -3,38 +3,44 @@
     <div class="section-top">
       <div class="top-text">
         <h1>rta</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis dicta eius error exercitationem,
-          expedita facilis, harum hic iure laboriosam necessitatibus optio perspiciatis praesentium quae quam quis quo
-          repellendus ullam vel.</p>
+        <p>Компания «РТА (Региональный Транспортный Агент)» занимается осуществлением грузоперевозок с 2017 года. За это
+          время мы продемонстрировали свою способность работать с разными видами грузов и транспортных средств, решать
+          самые сложные задачи и контролировать процесс транспортировки на каждом из его этапов</p>
       </div>
       <div class="top-image">
-        <img :src=Image alt="Ship">
+        <img :src=Gif alt="Ship">
       </div>
     </div>
     <div class="section-bot">
       <div class="bot-container">
-        <div class="bot-title">Lorem ipsum</div>
+        <div class="bot-title">Услуги</div>
         <div class="bot-items">
           <div class="bot-item--left">
-            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At in magni necessitatibus nisi obcaecati,
-              possimus.
+            <div class="items">
+              <div class="items--icon">
+                <i class="pi pi-globe" />
+              </div>
+              <div>Транспортировка грузов</div>
             </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At in magni necessitatibus nisi obcaecati,
-              possimus.
-            </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At in magni necessitatibus nisi obcaecati,
-              possimus.
+            <div class="items">
+              <div class="items--icon">
+                <i class="pi pi-check-square" />
+              </div>
+              <div>Таможенное оформление</div>
             </div>
           </div>
           <div class="bot-item--right">
-            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At in magni necessitatibus nisi obcaecati,
-              possimus.
+            <div class="items">
+              <div class="items--icon">
+                <i class="pi pi-table" />
+              </div>
+              <div>Складские услуги</div>
             </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At in magni necessitatibus nisi obcaecati,
-              possimus.
-            </div>
-            <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At in magni necessitatibus nisi obcaecati,
-              possimus.
+            <div class="items">
+              <div class="items--icon">
+                <i class="pi pi-dollar" />
+              </div>
+              <div>Аренда / Покупка / Продажа контейнеров</div>
             </div>
           </div>
         </div>
@@ -44,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import Image from '~/assets/images/ship left.jpg'
+import Gif from '~/assets/images/ship.gif'
 
 </script>
 
@@ -56,7 +62,6 @@ import Image from '~/assets/images/ship left.jpg'
 
   .section-top {
     @apply flex justify-between items-center;
-    @apply h-[80svh];
     @apply bg-sec;
 
     .top-text {
@@ -74,6 +79,7 @@ import Image from '~/assets/images/ship left.jpg'
     }
 
     .top-image {
+      @apply flex flex-col justify-center items-center;
       @apply min-w-[40rem] h-full;
       @apply overflow-hidden;
 
@@ -91,7 +97,7 @@ import Image from '~/assets/images/ship left.jpg'
 
     .bot-container {
       @apply flex flex-col justify-evenly items-start;
-      @apply text-xl;
+      @apply text-4xl;
 
       .bot-title {
         @apply w-full;
@@ -103,13 +109,33 @@ import Image from '~/assets/images/ship left.jpg'
         @apply flex justify-evenly items-center;
         @apply w-full;
         @apply pt-5;
+        @apply text-2xl;
 
         .bot-item--left {
+
+          .items {
+            @apply flex justify-start items-center gap-5;
+
+            &--icon {
+              i {
+                @apply text-2xl;
+              }
+            }
+          }
 
         }
 
         .bot-item--right {
 
+          .items {
+            @apply flex justify-start items-center gap-5;
+
+            &--icon {
+              i {
+                @apply text-2xl;
+              }
+            }
+          }
         }
       }
     }
