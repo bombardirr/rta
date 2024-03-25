@@ -23,12 +23,19 @@ const buttonSettings = ref([
 
 .social-button {
   @apply flex flex-col justify-center items-center;
-  @apply p-0 w-8 h-8 border-none;
+  @apply w-12 h-12;
+  @apply p-0 mb-2;
+  @apply border-none rounded-full;
+  @apply transition-all ease-in-out;
+  &:hover {
+    @apply transform -translate-y-0.5;
+    @apply shadow-xl shadow-black/60;
+  }
 
   span {
     @apply flex flex-col justify-center items-center;
-    @apply w-8 h-8;
     @apply text-4xl;
+    @apply rounded-full;
   }
 
   .p-button-label {
@@ -37,19 +44,12 @@ const buttonSettings = ref([
 }
 
 .telegram {
-  @apply text-[#27A7E7] bg-prime;
+  @apply text-[#27A7E7];
 
-  & > span {
-    @apply rounded-full hover:bg-[#27A7E7] hover:text-prime;
-  }
 }
 
 .whatsapp {
-  @apply text-[#25d366] bg-prime hover:bg-[#25d366];
-
-  & > span {
-    @apply rounded-full hover:bg-[#25d366] hover:text-prime;
-  }
+  @apply text-[#25d366];
 }
 
 </style>
