@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "nuxt": "^3.10.2",
-    "nuxt-primevue": "^0.3.0",
+    "primevue": "3.50.0",
     "nuxt-svg-icons": "^1.25.0",
     "primeicons": "^6.0.1",
     "vue": "^3.4.19",

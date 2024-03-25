@@ -2,7 +2,6 @@
 export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
-    'nuxt-primevue',
     'nuxt-svg-icons',
     '@nuxtjs/i18n',
   ],
@@ -34,7 +33,7 @@ export default defineNuxtConfig({
     ],
   },
   css: [
-    '@/assets/css/theme.scss',
+    '@/assets/css/themes/tailwind/theme.scss',
     '@/assets/css/styles.scss',
     'primeicons/primeicons.css',
   ],
