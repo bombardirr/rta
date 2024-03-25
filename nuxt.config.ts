@@ -1,6 +1,38 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss', 'nuxt-primevue', 'nuxt-svg-icons'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    'nuxt-primevue',
+    'nuxt-svg-icons',
+    '@nuxtjs/i18n',
+  ],
+  ssr: false,
+  i18n: {
+    lazy: true,
+    langDir: 'locales',
+    strategy: 'prefix_except_default',
+    defaultLocale: 'ru',
+    locales: [
+      {
+        code: 'ru',
+        iso: 'ru-RU',
+        file: 'ru-RU.json',
+        name: 'RU',
+      },
+      {
+        code: 'en',
+        iso: 'en-US',
+        file: 'en-US.json',
+        name: 'EN',
+      },
+      // {
+      //   code: 'zn',
+      //   iso: 'zn-CN',
+      //   file: 'zn-CN.json',
+      //   name: '中文',
+      // },
+    ],
+  },
   css: [
     '@/assets/css/theme.scss',
     '@/assets/css/styles.scss',

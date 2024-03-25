@@ -7,9 +7,7 @@
 
 import MainBlockA from '~/components/MainBlockA.vue'
 import MainBlockB from '~/components/MainBlockB.vue'
-
 </script>
-
 <style lang="scss">
 
 </style>

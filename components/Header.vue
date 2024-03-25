@@ -11,7 +11,7 @@
           class="call-button"
           v-for="setting in buttonSettings"
           :key="setting.label"
-          :label="setting.label"
+          :label="$t(setting.label)"
           :raised="setting.raised"
           :icon="setting.icon"
         />
@@ -50,11 +50,11 @@
           class="group transition duration-300"
           v-for="navItem in navItems"
           :key="navItem.name"
-          :to="navItem.to"
+          :to="localPath(navItem.to)"
           :class="{ 'text-act': activeRoute(navItem.to) }"
         >
           <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-prime"></span>
-          {{ navItem.name }}
+          {{ $t(navItem.name) }}
           <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-prime"></span>
         </NuxtLink>
       </nav>
@@ -72,7 +72,7 @@
               ]"
             @click="mobileMenuOpen = !mobileMenuOpen"
           >
-            <NuxtLink :to="navItem.to" class="mobile-menu-link">
+            <NuxtLink :to="localPath(navItem.to)" class="mobile-menu-link">
               {{ navItem.name }}
             </NuxtLink>
           </li>
@@ -92,6 +92,9 @@ import MenuIcon from '~/assets/icons/menu.svg?component'
 import CloseIcon from '~/assets/icons/close.svg?component'
 import LogoRu from '~/assets/icons/ru.svg?component'
 import MainButton from '~/components/MainButton.vue'
+import { useLocalePath } from '#i18n'
+
+const localPath = useLocalePath()
 
 const mobileMenuOpen = ref(false)
 
@@ -101,15 +104,15 @@ const toggleMobileMenu = () => {
 
 const navItems = ref([
   // { name: 'Домой', to: '/' },
-  { name: 'О нас', to: '/about' },
-  { name: 'Наши услуги', to: '/services' },
-  { name: 'Преимущества', to: '/features' },
-  { name: 'Реквизиты', to: '/info' },
-  { name: 'Контакты', to: '/contacts' },
+  { name: 'menu_about', to: '/about' },
+  { name: 'menu_services', to: '/services' },
+  { name: 'menu_features', to: '/features' },
+  { name: 'menu_info', to: '/info' },
+  { name: 'menu_contacts', to: '/contacts' },
 ])
 
 const buttonSettings = ref([
-    { label: 'Горячая линия', raised: true, icon: 'pi pi-phone' },
+    { label: 'call_us', raised: true, icon: 'pi pi-phone' },
   ],
 )
 const activeRoute = (path: string): boolean => {
