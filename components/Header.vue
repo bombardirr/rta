@@ -3,7 +3,7 @@
     <div class="nav-content-top">
       <!-- Логотип -->
       <NuxtLink to="/">
-        <LogoRu class="logo" />
+        <img :src="LogoEn" class="logo" alt="logo" />
       </NuxtLink>
       <!--Кнопка для звонка-->
       <a href="tel:'+7-812-740-34-44'">
@@ -16,13 +16,14 @@
           :icon="setting.icon"
         />
       </a>
+
+      <div class="social-btns">
+        <SocialButtonsGroup />
+      </div>
       <!--Выбор языка-->
       <div class="rate-lang-container">
-        <div class="currency-rate">&#36;: {{ (currency.Valute.USD.Value).toFixed(2) }}
-          РУБ
-        </div>
-        <div class="currency-rate">&#165;: {{ (currency.Valute.CNY.Value).toFixed(2) }} РУБ
-        </div>
+        <div class="currency-rate">&#36;: {{ (currency.Valute.USD.Value).toFixed(2) }}</div>
+        <div class="currency-rate">&#165;: {{ (currency.Valute.CNY.Value).toFixed(2) }}</div>
         <nav class="lang-items">
           <LangSelect />
         </nav>
@@ -51,7 +52,7 @@
           v-for="navItem in navItems"
           :key="navItem.name"
           :to="localPath(navItem.to)"
-          :class="{ 'text-act': activeRoute(navItem.to) }"
+          :class="{ 'text-black text-shadow-none': activeRoute(navItem.to) }"
         >
           <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-prime"></span>
           {{ $t(navItem.name) }}
@@ -73,7 +74,7 @@
             @click="mobileMenuOpen = !mobileMenuOpen"
           >
             <NuxtLink :to="localPath(navItem.to)" class="mobile-menu-link">
-              {{ navItem.name }}
+              {{ $t(navItem.name) }}
             </NuxtLink>
           </li>
         </ul>
@@ -90,7 +91,7 @@
 <script setup lang="ts">
 import MenuIcon from '~/assets/icons/menu.svg?component'
 import CloseIcon from '~/assets/icons/close.svg?component'
-import LogoRu from '~/assets/icons/ru.svg?component'
+import LogoEn from '~/assets/icons/logo_en.png'
 import MainButton from '~/components/MainButton.vue'
 import { useLocalePath } from '#i18n'
 
@@ -111,7 +112,7 @@ const navItems = ref([
 ])
 
 const buttonSettings = ref([
-    { label: 'call_us', raised: true, icon: 'pi pi-phone' },
+    { label: '+7-812-740-34-44', raised: true, icon: 'pi pi-phone' },
   ],
 )
 const activeRoute = (path: string): boolean => {
@@ -132,14 +133,23 @@ const { data: currency } = await useAsyncData(async () => {
 
   .nav-content-top {
     @apply flex justify-between items-center;
-    @apply px-5 py-5 sm:px-10;
-    @apply bg-[#F0F0F0];
+    @apply px-5 py-2 sm:px-10;
+    @apply w-full;
+    @apply bg-prime;
+    //@apply bg-[#A6C2D9];
+    //background: rgb(166, 194, 217);
+    //background: -moz-linear-gradient(90deg, rgba(166, 194, 217, 1) 35%, rgba(255, 255, 255, 1) 100%);
+    //background: -webkit-linear-gradient(90deg, rgba(166, 194, 217, 1) 35%, rgba(255, 255, 255, 1) 100%);
+    //background: linear-gradient(90deg, rgba(166, 194, 217, 1) 35%, rgba(255, 255, 255, 1) 100%);
+    //filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#a6c2d9", endColorstr="#ffffff", GradientType=1);
 
     .logo {
       @apply w-48;
+      @apply my-2;
       @apply transform -translate-y-0.5;
-      @apply shadow-xl shadow-black/60;
+      @apply shadow-md shadow-black/60;
       @apply transition-all ease-in-out rounded-md;
+
       &:hover {
         @apply transform translate-y-0.5;
         @apply shadow shadow-black/10;
@@ -149,13 +159,24 @@ const { data: currency } = await useAsyncData(async () => {
     .call-button {
       @apply h-8;
       @apply px-2 py-0 ml-5;
-      @apply rounded-none bg-sec border-none;
-      @apply text-sm text-prime text-nowrap;
-      @apply hover:border-[#4c956c] hover:bg-prime hover:text-sec;
+      @apply rounded-none border-none;
+      @apply text-sm text-sec text-nowrap;
+      @apply transform -translate-y-[.1rem];
+      @apply shadow-md shadow-black/60;
+      @apply transition-all ease-in-out rounded-md;
+
+      &:hover {
+        @apply transform translate-y-0.5;
+        @apply shadow shadow-black/10;
+      }
 
       & > span {
         @apply align-middle;
       }
+    }
+
+    .social-btns {
+      @apply ml-5;
     }
 
     .rate-lang-container {
@@ -169,6 +190,10 @@ const { data: currency } = await useAsyncData(async () => {
 
       .lang-items {
         @apply hidden xs:flex justify-evenly items-center gap-2;
+
+        & > * {
+          @apply bg-prime;
+        }
       }
     }
 
@@ -189,6 +214,7 @@ const { data: currency } = await useAsyncData(async () => {
 
     .nav-items {
       @apply hidden;
+      text-shadow: 1px 1px 2px black;
 
       @media (min-width: 768px) {
         @apply flex justify-start gap-10 items-center;
@@ -235,6 +261,10 @@ const { data: currency } = await useAsyncData(async () => {
     @apply flex justify-evenly items-center gap-2 xs:hidden;
     @apply text-prime;
   }
+}
+
+.text-shadow-none {
+  text-shadow: none;
 }
 
 </style>

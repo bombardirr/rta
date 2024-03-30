@@ -1,11 +1,11 @@
 <template>
+  <div></div>
 </template>
 
 <script setup lang="ts">
 
 definePageMeta({
   layout: 'map-layout',
-  pageTransition: false,
 })
 
 </script>
