@@ -5,7 +5,7 @@
         <!-- Логотип -->
         <div class="top-about--image">
           <NuxtLink to="/">
-            <LogoRu class="logo" />
+            <img :src="LogoEn" class="logo" alt="logo" />
           </NuxtLink>
         </div>
         <div class="top-about--text">
@@ -45,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-import LogoRu from '~/assets/icons/ru.svg?component'
+import LogoEn from '~/assets/icons/logo_en.png'
 import SocialButtonsGroup from '~/components/SocialButtonsGroup.vue'
 
 const year = new Date().getFullYear()
@@ -75,7 +75,15 @@ const ag = ref(
       &--image {
 
         .logo {
-          @apply w-60;
+          @apply w-48;
+          @apply my-2;
+          @apply transform -translate-y-[.1rem];
+          @apply shadow-md shadow-black/60;
+          @apply transition-all ease-in-out rounded-md;
+          &:hover {
+            @apply transform translate-y-0.5;
+            @apply shadow shadow-black/10;
+          }
         }
       }
 

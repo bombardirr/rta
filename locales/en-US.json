@@ -1,8 +1,6 @@
 {
   "menu_about": "About",
   "menu_services": "Services",
-  "menu_features": "We offer",
   "menu_info": "Info",
-  "menu_contacts": "Contacts",
-  "call_us": "Call us"
+  "menu_contacts": "Contacts"
 }
