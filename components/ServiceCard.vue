@@ -3,21 +3,25 @@
     <div class="card-container--image">
       <Transition>
         <div class="click-block" v-if="visible">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci architecto aspernatur at dolor dolores
-          eligendi eos est et ex excepturi exercitationem expedita explicabo facere fuga fugiat, hic impedit incidunt
-          inventore laudantium minus neque nihil nostrum numquam omnis pariatur perspiciatis provident qui repudiandae
-          suscipit ut veniam vero, voluptas voluptatem. Animi, aspernatur corporis delectus dicta doloribus ducimus ea
-          eos ipsum laborum nam nostrum officia pariatur quas quibusdam recusandae repellendus sequi tenetur veniam.
-          Accusamus alias at, consectetur consequatur deleniti dolores earum esse illum, inventore magnam magni maxime
-          minus molestiae nobis obcaecati pariatur perspiciatis possimus quam, ratione recusandae repudiandae sequi sit
-          tenetur veritatis voluptas!
+          <div class="text-t">{{ textT }}</div>
+          <div class="text-b">
+            <div class="text-ba">{{ textBA }}</div>
+            <div class="text-bb">{{ textBB }}</div>
+          </div>
+          <div class="text-l">
+            <div class="text-la">{{ textLA }}</div>
+            <div class="text-lb">{{ textLB }}</div>
+            <div class="text-lc">{{ textLC }}</div>
+            <div class="text-ld">{{ textLD }}</div>
+            <div class="text-le">{{ textLE }}</div>
+          </div>
+          <div class="text-e">{{ textE }}</div>
         </div>
       </Transition>
       <img :src=src alt="">
     </div>
     <div class="card-container--text">
       <div>{{ title }}</div>
-      <div>{{ text }}</div>
     </div>
   </div>
 </template>
@@ -36,7 +40,39 @@ defineProps({
       type: String,
       default: undefined,
     },
-    text: {
+    textT: {
+      type: String,
+      default: undefined,
+    },
+    textBA: {
+      type: String,
+      default: undefined,
+    },
+    textBB: {
+      type: String,
+      default: undefined,
+    },
+    textLA: {
+      type: String,
+      default: undefined,
+    },
+    textLB: {
+      type: String,
+      default: undefined,
+    },
+    textLC: {
+      type: String,
+      default: undefined,
+    },
+    textLD: {
+      type: String,
+      default: undefined,
+    },
+    textLE: {
+      type: String,
+      default: undefined,
+    },
+    textE: {
       type: String,
       default: undefined,
     },
@@ -53,7 +89,7 @@ defineProps({
   @apply p-5;
 
   &--text {
-    @apply px-5;
+    @apply px-5 text-lg text-center w-full h-full align-middle uppercase;
   }
 
   &--image {
@@ -62,10 +98,27 @@ defineProps({
 
     .click-block {
       @apply absolute;
+      @apply flex flex-col justify-evenly items-start gap-2;
       @apply w-full h-full;
+      @apply p-4;
       @apply backdrop-blur;
       @apply bottom-0;
+      @apply text-xl;
       text-shadow: 1px 1px 2px black;
+
+      .text-t {
+      }
+
+      .text-b {
+      }
+
+      .text-l {
+        @apply flex flex-col justify-evenly items-start gap-2;
+        @apply ml-5;
+      }
+
+      .text-e {
+      }
     }
 
     img {

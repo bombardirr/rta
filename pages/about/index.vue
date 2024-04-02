@@ -53,6 +53,7 @@ const aboutData = ref([
 <style lang="scss">
 .about-container {
   @apply grid auto-rows-auto;
+  @apply min-h-[75svh];
 
   &--top {
     @apply p-5;
