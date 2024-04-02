@@ -16,6 +16,10 @@
           :icon="setting.icon"
         />
       </a>
+      
+      <Button class="email-button">
+        <EmailForm />
+      </Button>
 
       <div class="social-btns">
         <SocialButtonsGroup />
@@ -177,6 +181,20 @@ const { data: currency } = await useAsyncData(async () => {
 
     .social-btns {
       @apply ml-5;
+    }
+
+    .email-button {
+      @apply px-2 py-0 ml-5;
+      @apply w-fit rounded-none border-none;
+      @apply text-sec text-nowrap;
+      @apply transform -translate-y-[.1rem];
+      @apply shadow-md shadow-black/60;
+      @apply transition-all ease-in-out rounded-md;
+
+      &:hover {
+        @apply transform translate-y-0.5;
+        @apply shadow shadow-black/10;
+      }
     }
 
     .rate-lang-container {

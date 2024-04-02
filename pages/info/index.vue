@@ -31,6 +31,7 @@ const dataDoc = ref([
 <style lang="scss">
 .doc-wrapper {
   @apply flex justify-evenly items-center;
+  @apply min-h-[75svh];
 
   &--title {
 

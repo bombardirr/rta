@@ -11,14 +11,17 @@
         <div class="top-about--text">
           <div>Компания «RTA» - опытный грузоперевозчик с гарантированной надежностью и доступными ценами</div>
         </div>
+        <div class="top-about--policy">
+          <NuxtLink :to="policyLink.to">{{ policyLink.name }}</NuxtLink>
+        </div>
       </div>
       <div class="top-details">
         <div class="top-details--title">ООО «Региональный Транспортный Агент»</div>
         <div class="top-details--phone"><a href="tel:'+7-812-740-34-44'">+7-812-740-34-44</a></div>
         <div class="top-details--mail"><a href="mailto:'info@rtarus.com'">info@rtarus.com</a></div>
-        <div class="top-details--social">
-          <SocialButtonsGroup />
-        </div>
+        <!--        <div class="top-details&#45;&#45;social">-->
+        <!--          <SocialButtonsGroup />-->
+        <!--        </div>-->
       </div>
       <div class="top-address">
         <div class="top-address--time">Работаем с понедельника по пятницу 8:00 - 18:00</div>
@@ -53,6 +56,8 @@ const year = new Date().getFullYear()
 const ag = ref(
   { to: 'https://t.me/Artemoniuss' },
 )
+
+const policyLink = ref({ name: 'политика конфиденциальности', to: '/privacy_policy' })
 
 </script>
 
@@ -89,6 +94,10 @@ const ag = ref(
 
       &--text {
         @apply text-sm;
+      }
+
+      &--policy {
+        @apply text-xs text-dk;
       }
     }
 
