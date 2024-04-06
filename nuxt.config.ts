@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'nuxt-svg-icons',
     '@nuxtjs/i18n',
+    '@vesp/nuxt-fontawesome',
   ],
   ssr: false,
   i18n: {

@@ -42,7 +42,7 @@ defineProps({
 
     &--icon {
       i {
-        @apply text-2xl;
+        @apply text-xs md:text-2xl;
       }
     }
   }

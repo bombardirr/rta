@@ -14,7 +14,7 @@
     <div class="section-bot">
       <div class="bot-container">
         <div class="bot-title">Услуги</div>
-        <div class="grid grid-cols-2">
+        <div class=" bot-text">
           <ServicesList
             v-for="data in serviceData"
             :key="data.title"
@@ -44,51 +44,53 @@ const serviceData = ref([
 
 .a-container {
   @apply flex flex-col justify-evenly items-center;
-  @apply my-5;
+  @apply my-5 px-2;
 
   .section-top {
     @apply flex justify-between items-center;
-    @apply bg-sec;
 
     .top-text {
-      @apply flex flex-col justify-evenly items-start gap-4;
+      @apply flex flex-1 flex-col justify-evenly items-start gap-2 xl:gap-4;
       @apply text-prime;
-      @apply px-20;
+      @apply p-2 xs:p-6 xl:p-10;
+      @apply bg-sec;
 
       h1 {
-        @apply text-4xl uppercase;
+        @apply text-sm sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl uppercase;
       }
 
       p {
-        @apply text-2xl
+        @apply text-[.5rem] sm:text-sm md:text-lg lg:text-xl xl:text-2xl
       }
     }
 
     .top-image {
-      @apply flex flex-col justify-center items-center;
-      @apply min-w-[40rem] h-full;
+      @apply flex flex-1 flex-col justify-center items-center;
+      @apply w-full;
       @apply overflow-hidden;
-
-      img {
-        @apply w-full;
-      }
     }
   }
 
   .section-bot {
     @apply w-full;
-    @apply px-10 pt-10;
+    @apply px-2 pt-5 lg:pt-0;
     @apply bg-prime;
     @apply text-sec;
 
     .bot-container {
       @apply flex flex-col justify-evenly items-start;
-      @apply text-4xl;
 
       .bot-title {
         @apply w-full;
-        @apply uppercase;
+        @apply text-xs xs:text-sm sm:text-lg md:text-2xl lg:text-3xl xl:text-4xl uppercase;
         @apply border-b-2;
+      }
+
+      .bot-text {
+        @apply grid grid-cols-1 sm:grid-cols-2;
+        & > div {
+          @apply text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl
+        }
       }
     }
   }

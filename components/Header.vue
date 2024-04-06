@@ -2,27 +2,32 @@
   <header class="nav-container">
     <div class="nav-content-top">
       <!-- Логотип -->
-      <NuxtLink to="/">
-        <img :src="LogoEn" class="logo" alt="logo" />
+      <NuxtLink class="logo" to="/">
+        <img :src="LogoEn" alt="logo" />
       </NuxtLink>
-      <!--Кнопка для звонка-->
-      <a href="tel:'+7-812-740-34-44'">
-        <MainButton
-          class="call-button"
-          v-for="setting in buttonSettings"
-          :key="setting.label"
-          :label="$t(setting.label)"
-          :raised="setting.raised"
-          :icon="setting.icon"
-        />
-      </a>
-      
-      <Button class="email-button">
-        <EmailForm />
-      </Button>
+      <div
+        class="flex flex-col sm:flex-row justify-center sm:justify-between items-start sm:items-center my-2 xs:my-0 ml-8 xs:ml-0">
+        <!--Кнопка для звонка-->
+        <a href="tel:'+7-812-740-34-44'">
+          <MainButton
+            class="call-button"
+            v-for="setting in buttonSettings"
+            :key="setting.label"
+            :label="$t(setting.label)"
+            :raised="setting.raised"
+            :icon="setting.icon"
+          />
+        </a>
+        <div class="flex justify evenly items-center">
+          <Button class="email-button">
+            <EmailForm />
+          </Button>
 
-      <div class="social-btns">
-        <SocialButtonsGroup />
+          <div class="social-btns">
+            <SocialButtonsGroup />
+          </div>
+        </div>
+
       </div>
       <!--Выбор языка-->
       <div class="rate-lang-container">
@@ -97,6 +102,7 @@ import MenuIcon from '~/assets/icons/menu.svg?component'
 import CloseIcon from '~/assets/icons/close.svg?component'
 import LogoEn from '~/assets/icons/logo_en.png'
 import MainButton from '~/components/MainButton.vue'
+import LangSelect from '~/components/LangSelect.vue'
 import { useLocalePath } from '#i18n'
 
 const localPath = useLocalePath()
@@ -136,42 +142,34 @@ const { data: currency } = await useAsyncData(async () => {
   @apply relative z-10;
 
   .nav-content-top {
-    @apply flex justify-between items-center;
-    @apply px-5 py-2 sm:px-10;
+    @apply grid grid-cols-3 justify-items-start items-center;
+    @apply px-2 xs:px-5 py-0 sm:py-2;
     @apply w-full;
     @apply bg-prime;
-    //@apply bg-[#A6C2D9];
-    //background: rgb(166, 194, 217);
-    //background: -moz-linear-gradient(90deg, rgba(166, 194, 217, 1) 35%, rgba(255, 255, 255, 1) 100%);
-    //background: -webkit-linear-gradient(90deg, rgba(166, 194, 217, 1) 35%, rgba(255, 255, 255, 1) 100%);
-    //background: linear-gradient(90deg, rgba(166, 194, 217, 1) 35%, rgba(255, 255, 255, 1) 100%);
-    //filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#a6c2d9", endColorstr="#ffffff", GradientType=1);
 
     .logo {
-      @apply w-48;
+      @apply w-36 xs:w-fit md:w-52;
       @apply my-2;
       @apply transform -translate-y-0.5;
-      @apply shadow-md shadow-black/60;
+      //@apply shadow-md shadow-black/60;
       @apply transition-all ease-in-out rounded-md;
 
       &:hover {
         @apply transform translate-y-0.5;
-        @apply shadow shadow-black/10;
+        //@apply shadow shadow-black/10;
       }
     }
 
     .call-button {
-      @apply h-8;
-      @apply px-2 py-0 ml-5;
       @apply rounded-none border-none;
-      @apply text-sm text-sec text-nowrap;
+      @apply text-xs xs:text-sm sm:text-base lg:text-lg text-sec text-nowrap;
       @apply transform -translate-y-[.1rem];
-      @apply shadow-md shadow-black/60;
+      //@apply shadow-md shadow-black/60;
       @apply transition-all ease-in-out rounded-md;
 
       &:hover {
         @apply transform translate-y-0.5;
-        @apply shadow shadow-black/10;
+        //@apply shadow shadow-black/10;
       }
 
       & > span {
@@ -180,34 +178,33 @@ const { data: currency } = await useAsyncData(async () => {
     }
 
     .social-btns {
-      @apply ml-5;
+      @apply justify-self-center;
     }
 
     .email-button {
-      @apply px-2 py-0 ml-5;
-      @apply w-fit rounded-none border-none;
+      @apply rounded-none border-none;
       @apply text-sec text-nowrap;
       @apply transform -translate-y-[.1rem];
-      @apply shadow-md shadow-black/60;
+      //@apply shadow-md shadow-black/60;
       @apply transition-all ease-in-out rounded-md;
 
       &:hover {
         @apply transform translate-y-0.5;
-        @apply shadow shadow-black/10;
+        //@apply shadow shadow-black/10;
       }
     }
 
     .rate-lang-container {
-      @apply flex justify-end items-center gap-10;
+      @apply flex justify-end items-center gap-2 lg:gap-5;
       @apply w-full;
       @apply text-[#4c956c];
 
       .currency-rate {
-        @apply hidden sm:block;
+        @apply hidden lg:block;
       }
 
       .lang-items {
-        @apply hidden xs:flex justify-evenly items-center gap-2;
+        @apply hidden md:flex justify-evenly items-center gap-2;
 
         & > * {
           @apply bg-prime;
@@ -260,6 +257,10 @@ const { data: currency } = await useAsyncData(async () => {
       .mobile-menu-link {
         @apply text-xl;
       }
+    }
+
+    .mobile-menu-lang-items {
+      @apply block;
     }
 
     &-enter-active, &-leave-active {
