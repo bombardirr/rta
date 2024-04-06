@@ -9,7 +9,7 @@
           </NuxtLink>
         </div>
         <div class="top-about--text">
-          <div>Компания «RTA» - опытный грузоперевозчик с гарантированной надежностью и доступными ценами</div>
+          <div>Компания «RTA» - опытный грузоперевозчик с доступными ценами</div>
         </div>
         <div class="top-about--policy">
           <NuxtLink :to="policyLink.to">{{ policyLink.name }}</NuxtLink>
@@ -65,17 +65,18 @@ const policyLink = ref({ name: 'политика конфиденциально�
 
 .footer-container {
   @apply bg-prime;
-  @apply px-10 pt-5 mt-5;
+  @apply px-5 xs:px-10 mt-5;
   @apply border-t-2 border-[#4c956c];
+  @apply text-xs text-center xs:text-left;
 
   .top-container {
-    @apply flex justify-between items-center gap-2;
+    @apply flex flex-col xs:flex-row justify-between items-center gap-2;
     @apply bg-prime pb-2;
     @apply text-sec;
 
     .top-about {
-      @apply w-60 h-full;
-      @apply flex flex-col justify-between items-start gap-2;
+      @apply h-full;
+      @apply flex flex-col justify-between items-center xs:items-start gap-2;
 
       &--image {
 
@@ -83,17 +84,16 @@ const policyLink = ref({ name: 'политика конфиденциально�
           @apply w-48;
           @apply my-2;
           @apply transform -translate-y-[.1rem];
-          @apply shadow-md shadow-black/60;
+          //@apply shadow-md shadow-black/60;
           @apply transition-all ease-in-out rounded-md;
           &:hover {
             @apply transform translate-y-0.5;
-            @apply shadow shadow-black/10;
+            //@apply shadow shadow-black/10;
           }
         }
       }
 
       &--text {
-        @apply text-sm;
       }
 
       &--policy {
@@ -102,8 +102,7 @@ const policyLink = ref({ name: 'политика конфиденциально�
     }
 
     .top-details {
-      @apply flex flex-col justify-between items-start gap-2;
-      @apply h-full;
+      @apply flex flex-col justify-between items-center xs:items-start gap-2;
 
       &--title {
 
@@ -116,15 +115,11 @@ const policyLink = ref({ name: 'политика конфиденциально�
       &--mail {
 
       }
-
-      &--social {
-        @apply flex justify-evenly items-center gap-5 w-fit;
-      }
     }
 
     .top-address {
-      @apply flex flex-col justify-between items-start gap-2;
-      @apply w-60 h-full text-wrap;
+      @apply flex flex-col justify-start items-center xs:items-start gap-2;
+      @apply text-wrap;
 
       &--time {
 
@@ -138,7 +133,7 @@ const policyLink = ref({ name: 'политика конфиденциально�
   .bot-container {
     @apply flex justify-center items-center gap-2;
     @apply py-2;
-    @apply text-xs text-dk;
+    @apply text-xs text-dk text-nowrap;
 
     .year {
       @apply border-r-2 pr-2;

@@ -4,14 +4,14 @@
       <img :src=src alt="">
     </div>
     <div class="aboutCard-container--text">
-      <div>{{ title }}</div>
-      <div>{{ text }}</div>
+      <div class="text-title">{{ title }}</div>
+      <div class="text-body">{{ text }}</div>
     </div>
   </div>
   <div class="aboutCard-container" v-else>
     <div class="aboutCard-container--text">
-      <div>{{ title }}</div>
-      <div>{{ text }}</div>
+      <div class="text-title">{{ title }}</div>
+      <div class="text-body">{{ text }}</div>
     </div>
     <div class="aboutCard-container--image">
       <img :src=src alt="">
@@ -45,20 +45,29 @@ defineProps({
 
 <style lang="scss">
 .aboutCard-container {
-  @apply grid grid-rows-2 gap-2 items-center;
-  @apply bg-sec;
+  @apply grid grid-rows-2 justify-end gap-1 items-center 2xl:w-48;
   @apply text-prime;
-  @apply p-5 overflow-hidden;
+  @apply overflow-hidden;
 
   &--text {
-    @apply px-5 z-10;
+    @apply lg:px-2 2xl:px-5 z-10 flex flex-col justify-evenly text-xs 2xl:text-sm;
+    @apply bg-sec rounded;
+    @apply h-full w-full;
+
+    .text-title {
+      @apply text-[.5rem] lg:text-xs 2xl:text-sm text-center 2xl:text-start;
+    }
+
+    .text-body {
+      @apply hidden 2xl:block;
+    }
   }
 
   &--image {
-    @apply w-full h-[10rem] overflow-hidden self-center z-0;
+    @apply z-0 h-full w-full flex flex-col justify-center;
 
     img {
-      @apply w-full;
+      @apply rounded;
     }
   }
 }

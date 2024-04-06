@@ -20,8 +20,12 @@
     "vue-yandex-maps": "^1.1.0"
   },
   "devDependencies": {
+    "@fortawesome/free-brands-svg-icons": "^6.5.2",
+    "@fortawesome/free-regular-svg-icons": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@nuxtjs/i18n": "^8.2.0",
     "@nuxtjs/tailwindcss": "^6.11.4",
+    "@vesp/nuxt-fontawesome": "^1.0.4",
     "sass": "^1.71.0"
   }
 }

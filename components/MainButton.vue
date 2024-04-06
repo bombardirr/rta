@@ -1,5 +1,5 @@
 <template>
-  <Button
+  <Button class="btn"
     :label="label"
     :severity="severity"
     :raised="raised"
@@ -41,5 +41,9 @@ defineProps({
 </script>
 
 <style lang="scss">
+.btn{
+  @apply shadow-none;
+}
+
 
 </style>

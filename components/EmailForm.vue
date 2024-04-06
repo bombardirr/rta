@@ -1,5 +1,5 @@
 <template>
-  <Button class="p-2 flex justify-center items-center" @click="visibleDialog=true">
+  <Button class="btn" @click="visibleDialog=true">
     <i class="pi pi-envelope"></i>
   </Button>
   <Dialog
@@ -66,6 +66,7 @@
 import emailjs from '@emailjs/browser'
 import Dialog from 'primevue/dialog'
 import InputText from 'primevue/inputtext'
+import Textarea from 'primevue/textarea'
 
 const visibleDialog = ref(false)
 const emailSentMessage = ref('')
@@ -119,6 +120,14 @@ const resetFormFields = () => {
 </script>
 
 <style lang="scss">
+.btn {
+  @apply px-3 py-0 flex justify-center items-center;
+
+  & > i {
+    @apply text-base xs:text-2xl;
+  }
+}
+
 .dialog {
 
   .form {

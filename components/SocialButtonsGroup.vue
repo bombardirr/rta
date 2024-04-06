@@ -7,11 +7,15 @@
       :icon="setting.icon"
       :class="setting.class"
     />
+    <NuxtLink :to="'/'">
+      <font-awesome class="wechat" :icon="faWeixin" />
+    </NuxtLink>
   </div>
 </template>
 
 <script setup lang="ts">
 import MainButton from '~/components/MainButton.vue'
+import { faWeixin } from '@fortawesome/free-brands-svg-icons'
 
 const buttonSettings = ref([
     { raised: true, icon: 'pi pi-telegram', rounded: true, class: 'telegram' },
@@ -23,25 +27,20 @@ const buttonSettings = ref([
 
 <style lang="scss">
 .social-group {
-  @apply flex justify-evenly items-center gap-2;
+  @apply flex justify-evenly items-center gap-1 sm:gap-2;
 
   .social-button {
     @apply flex flex-col justify-center items-center;
-    @apply w-10 h-10;
-    @apply p-0 mb-2;
-    @apply border-none rounded-full;
-    @apply transform -translate-y-[.1rem];
-    @apply shadow-md shadow-black/60;
-    @apply transition-all ease-in-out rounded-full;
-    &:hover {
-      @apply transform translate-y-0.5;
-      @apply shadow shadow-black/10;
-    }
+    @apply w-full p-1;
 
     span {
       @apply flex flex-col justify-center items-center;
-      @apply text-4xl;
-      @apply rounded-full;
+      @apply text-xl xs:text-2xl leading-none;
+      @apply transform -translate-y-[.1rem];
+      @apply transition-all ease-in-out rounded-full;
+      &:hover {
+        @apply transform translate-y-0.5;
+      }
     }
 
     .p-button-label {
@@ -56,6 +55,16 @@ const buttonSettings = ref([
 
   .whatsapp {
     @apply text-[#25d366];
+  }
+
+  .wechat {
+    @apply cursor-pointer align-middle;
+    @apply text-[#5CC928] text-2xl xs:text-3xl;
+    @apply transform -translate-y-[.1rem];
+    @apply transition-all ease-in-out rounded-full;
+    &:hover {
+      @apply transform translate-y-0.5;
+    }
   }
 
 }

@@ -1,10 +1,10 @@
 <template>
-  <div class="relative">
+  <div class="default-container">
     <div class="header-wrap">
       <Header />
     </div>
 
-    <div class="container mx-auto mt-5">
+    <div class="slot-container">
       <slot />
     </div>
 
@@ -20,9 +20,18 @@ import Footer from '~/components/Footer.vue'
 
 <style lang="scss">
 
-.header-wrap {
-  @apply sticky top-0 left-0 z-50;
-  @apply shadow-2xl;
+.default-container {
+  @apply relative;
+
+  .header-wrap {
+    @apply sticky top-0 left-0 z-50;
+    @apply shadow-2xl;
+  }
+
+  .slot-container {
+    @apply container mx-auto sm:mt-5;
+  }
 }
+
 </style>
 
