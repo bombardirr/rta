@@ -8,9 +8,6 @@
             <img :src="LogoEn" class="logo" alt="logo" />
           </NuxtLink>
         </div>
-        <div class="top-about--text">
-          <div>Компания «RTA» - опытный грузоперевозчик с доступными ценами</div>
-        </div>
         <div class="top-about--policy">
           <NuxtLink :to="policyLink.to">{{ policyLink.name }}</NuxtLink>
         </div>
@@ -64,15 +61,14 @@ const policyLink = ref({ name: 'политика конфиденциально�
 <style lang="scss">
 
 .footer-container {
-  @apply bg-prime;
+  @apply bg-gradient-to-r from-[#4c956c] to-[#0079A2];
   @apply px-5 xs:px-10 mt-5;
-  @apply border-t-2 border-[#4c956c];
-  @apply text-xs text-center xs:text-left;
+  @apply text-xs text-center xs:text-left text-prime;
 
   .top-container {
     @apply flex flex-col xs:flex-row justify-between items-center gap-2;
-    @apply bg-prime pb-2;
-    @apply text-sec;
+    @apply pb-2;
+    @apply rounded;
 
     .top-about {
       @apply h-full;
@@ -91,9 +87,6 @@ const policyLink = ref({ name: 'политика конфиденциально�
             //@apply shadow shadow-black/10;
           }
         }
-      }
-
-      &--text {
       }
 
       &--policy {

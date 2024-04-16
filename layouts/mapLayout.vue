@@ -1,11 +1,16 @@
 <template>
-  <div class="relative">
+  <div class="relative"
+  >
     <YaMap />
-    <div class="header-wrap">
+    <div class="header-wrap"
+         data-aos="fade-left"
+         data-aos-once="true"
+    >
       <Header />
     </div>
 
-    <div class="mapLayout-content">
+    <div class="mapLayout-content"
+    >
       <slot />
     </div>
   </div>

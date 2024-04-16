@@ -1,6 +1,10 @@
 <template>
   <div
-    class="map-card-container">
+    class="map-card-container"
+    data-aos="fade-left"
+    data-aos-once="true"
+    data-aos-delay="150"
+  >
     <div class="map-card-container--item">
       <div class="item-icon">
         <div class="pi pi-building" />
