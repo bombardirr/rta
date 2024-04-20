@@ -26,6 +26,7 @@
     "@nuxtjs/i18n": "^8.2.0",
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@vesp/nuxt-fontawesome": "^1.0.4",
+    "nuxt-aos": "^1.2.4",
     "sass": "^1.71.0"
   }
 }

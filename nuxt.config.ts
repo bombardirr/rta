@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     'nuxt-svg-icons',
     '@nuxtjs/i18n',
     '@vesp/nuxt-fontawesome',
+    'nuxt-aos',
   ],
   ssr: false,
   i18n: {
@@ -28,12 +29,12 @@ export default defineNuxtConfig({
         file: 'en-US.json',
         name: 'EN',
       },
-      // {
-      //   code: 'zn',
-      //   iso: 'zn-CN',
-      //   file: 'zn-CN.json',
-      //   name: '中文',
-      // },
+      {
+        code: 'zn',
+        iso: 'zn-CN',
+        file: 'zn-CN.json',
+        name: '中文',
+      },
     ],
   },
   css: [

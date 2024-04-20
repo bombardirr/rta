@@ -1,10 +1,23 @@
 <template>
-  <div class="default-container">
-    <div class="header-wrap">
+  <div
+    id="serv"
+    class="default-container"
+  >
+    <div
+      class="header-wrap"
+      data-aos="fade-right"
+      data-aos-once="true"
+    >
       <Header />
+
+      <div class="call-button-wrapper">
+        <CallButton />
+      </div>
     </div>
 
-    <div class="slot-container">
+    <div
+      class="slot-container"
+    >
       <slot />
     </div>
 
@@ -12,7 +25,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import Header from '~/components/Header.vue'
 import Footer from '~/components/Footer.vue'
 
@@ -25,11 +38,22 @@ import Footer from '~/components/Footer.vue'
 
   .header-wrap {
     @apply sticky top-0 left-0 z-50;
-    @apply shadow-2xl;
+  }
+
+  .call-button-wrapper {
+    @apply xl:hidden;
+    @apply absolute;
+    @apply top-full right-4 z-50;
+    @apply w-fit;
+    @apply text-prime text-nowrap;
+    @apply border rounded-lg;
+    @apply mt-2;
+    @apply bg-dk;
   }
 
   .slot-container {
-    @apply container mx-auto sm:mt-5;
+    @apply mx-auto;
+    @apply flex flex-col justify-start items-center gap-2;
   }
 }
 

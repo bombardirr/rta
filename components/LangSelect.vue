@@ -14,7 +14,11 @@
   </select>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
+
+
+const switchLocalePath = useSwitchLocalePath()
+const { locales, locale, setLocale } = useI18n()
 
 const chosenLanguage = computed({
   get: () => locale.value,
@@ -23,14 +27,10 @@ const chosenLanguage = computed({
   },
 })
 
-const switchLocalePath = useSwitchLocalePath()
-const { locales, locale, setLocale } = useI18n()
-
 </script>
 
 <style lang="scss">
 .lang-container {
-  @apply bg-[#F0F0F0];
 }
 
 </style>

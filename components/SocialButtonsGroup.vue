@@ -1,19 +1,19 @@
 <template>
   <div class="social-group">
     <MainButton
-      class="social-button"
       v-for="setting in buttonSettings"
       :key="setting.icon"
-      :icon="setting.icon"
       :class="setting.class"
+      :icon="setting.icon"
+      class="social-button"
     />
     <NuxtLink :to="'/'">
-      <font-awesome class="wechat" :icon="faWeixin" />
+      <font-awesome :icon="faWeixin" class="wechat" />
     </NuxtLink>
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import MainButton from '~/components/MainButton.vue'
 import { faWeixin } from '@fortawesome/free-brands-svg-icons'
 
@@ -35,7 +35,7 @@ const buttonSettings = ref([
 
     span {
       @apply flex flex-col justify-center items-center;
-      @apply text-xl xs:text-2xl leading-none;
+      @apply text-xl xs:text-2xl md:text-4xl leading-none;
       @apply transform -translate-y-[.1rem];
       @apply transition-all ease-in-out rounded-full;
       &:hover {
@@ -59,7 +59,7 @@ const buttonSettings = ref([
 
   .wechat {
     @apply cursor-pointer align-middle;
-    @apply text-[#5CC928] text-2xl xs:text-3xl;
+    @apply text-[#5CC928] text-2xl xs:text-3xl md:text-5xl;
     @apply transform -translate-y-[.1rem];
     @apply transition-all ease-in-out rounded-full;
     &:hover {
