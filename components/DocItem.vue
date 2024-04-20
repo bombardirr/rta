@@ -1,6 +1,7 @@
 <template>
   <a
-    :href="url" download
+    :href=url
+    download
   >
     <div
       class='docCard-container'
@@ -13,14 +14,14 @@
         {{ title }}
       </div>
       <div class="docCard-container--file">
-        <div class="download-text">Скачать</div>
+        <div class="download-text">{{ $t('download') }}</div>
         <i :class="icon" class="download-icon" />
       </div>
     </div>
   </a>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 defineProps({
   mainTitle: {
     type: String,
@@ -48,7 +49,7 @@ defineProps({
 
 <style lang="scss">
 .docCard-container {
-  @apply text-2xl;
+  @apply text-xl;
 
   &--image {
 

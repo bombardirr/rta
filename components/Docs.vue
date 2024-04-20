@@ -6,14 +6,13 @@
       class="docs-container--cards"
       data-aos="fade-up"
       data-aos-delay="150"
-      data-aos-mirror="true"
     >
       <DocItem
         v-for="item in dataDoc"
         :key="item.title"
         :icon="item.icon"
         :srcImg="item.srcImg"
-        :title="item.title"
+        :title="$t(item.title)"
         :url="item.url"
       />
     </div>
@@ -27,18 +26,28 @@ import docImageC from '~/assets/images/docC.png'
 import docImageD from '~/assets/images/docD.png'
 
 const dataDoc = ref([
-  { title: 'Карточка РТА', icon: 'pi pi-download', url: '~/assets/files/Карточка РТА.doc', srcImg: docImageA },
-  { title: 'Договор ТЭО', icon: 'pi pi-download', url: '~/assets/files/Договор ТЭО.doc', srcImg: docImageB },
   {
-    title: 'Договор КТК',
+    title: 'doc-title_a',
     icon: 'pi pi-download',
-    url: '~/assets/files/Договор предоставления ктк с клиентами.docx',
+    url: '/files/Карточка РТА.doc',
+    srcImg: docImageA,
+  },
+  {
+    title: 'doc-title_b',
+    icon: 'pi pi-download',
+    url: '/files/Договор ТЭО.doc',
+    srcImg: docImageB,
+  },
+  {
+    title: 'doc-title_c',
+    icon: 'pi pi-download',
+    url: '/files/Договор предоставления ктк с клиентами.docx',
     srcImg: docImageC,
   },
   {
-    title: 'Доставка КТК',
+    title: 'doc-title_d',
     icon: 'pi pi-download',
-    url: '~/assets/files/Договора доставки ктк (мы платим).docx',
+    url: '/files/Договора доставки ктк (мы платим).docx',
     srcImg: docImageD,
   },
 ])
@@ -56,8 +65,7 @@ const dataDoc = ref([
   }
 
   &--cards {
-    //@apply flex justify-evenly items-center gap-2;
-    @apply grid grid-cols-2 grid-flow-row gap-4;
+    @apply grid grid-cols-2 gap-4 md:grid md:grid-cols-4;
     @apply row-span-5;
 
   }

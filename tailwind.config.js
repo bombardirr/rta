@@ -12,7 +12,7 @@ module.exports = {
     extend: {
       screens: {
         // xs: '340px',
-        xs: '500px',
+        xs: '475px',
       },
       textColor: {
         prime: '#fff',

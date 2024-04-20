@@ -3,8 +3,6 @@
     <div class="card-container--text">
       <div class="text-t">{{ textT }}</div>
       <div class="text-b">
-        <div class="text-ba">{{ textBA }}</div>
-        <div class="text-bb">{{ textBB }}</div>
       </div>
       <div class="text-l">
         <div v-if="textLA" class="text-l--item">
@@ -32,7 +30,6 @@
           <div class="text-le">{{ textLF }}</div>
         </div>
       </div>
-      <div class="text-e">{{ textE }}</div>
     </div>
   </div>
 </template>
@@ -41,14 +38,6 @@
 
 defineProps({
     textT: {
-      type: String,
-      default: undefined,
-    },
-    textBA: {
-      type: String,
-      default: undefined,
-    },
-    textBB: {
       type: String,
       default: undefined,
     },
@@ -76,10 +65,6 @@ defineProps({
       type: String,
       default: undefined,
     },
-    textE: {
-      type: String,
-      default: undefined,
-    },
   },
 )
 
@@ -89,7 +74,7 @@ defineProps({
 .card-container {
 
   &--text {
-    @apply text-nowrap text-4xl font-bold;
+    @apply text-nowrap font-bold;
     @apply grid auto-rows-auto gap-2;
 
     .text-t {

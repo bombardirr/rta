@@ -9,6 +9,10 @@
       data-aos-once="true"
     >
       <Header />
+
+      <div class="call-button-wrapper">
+        <CallButton />
+      </div>
     </div>
 
     <div
@@ -34,6 +38,17 @@ import Footer from '~/components/Footer.vue'
 
   .header-wrap {
     @apply sticky top-0 left-0 z-50;
+  }
+
+  .call-button-wrapper {
+    @apply xl:hidden;
+    @apply absolute;
+    @apply top-full right-4 z-50;
+    @apply w-fit;
+    @apply text-prime text-nowrap;
+    @apply border rounded-lg;
+    @apply mt-2;
+    @apply bg-dk;
   }
 
   .slot-container {

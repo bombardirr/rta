@@ -2,7 +2,7 @@
   <div></div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 
 definePageMeta({
   layout: 'map-layout',
@@ -14,6 +14,5 @@ definePageMeta({
 .yandex-container {
   @apply fixed;
   @apply top-0 left-0 right-0 bottom-0 -z-50;
-  @apply h-[100svh];
 }
 </style>

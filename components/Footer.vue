@@ -5,25 +5,22 @@
         <!-- Логотип -->
         <div class="top-about--image">
           <NuxtLink to="/">
-            <img :src="LogoEn" class="logo" alt="logo" />
+            <img :src="LogoEn" alt="logo" class="logo" />
           </NuxtLink>
         </div>
         <div class="top-about--policy">
-          <NuxtLink :to="policyLink.to">{{ policyLink.name }}</NuxtLink>
+          <NuxtLink :to="localPath(policyLink.to)">{{ $t(policyLink.name) }}</NuxtLink>
         </div>
       </div>
       <div class="top-details">
-        <div class="top-details--title">ООО «Региональный Транспортный Агент»</div>
+        <div class="top-details--title">{{ $t('company_full_name') }}</div>
         <div class="top-details--phone"><a href="tel:'+7-812-740-34-44'">+7-812-740-34-44</a></div>
         <div class="top-details--mail"><a href="mailto:'info@rtarus.com'">info@rtarus.com</a></div>
-        <!--        <div class="top-details&#45;&#45;social">-->
-        <!--          <SocialButtonsGroup />-->
-        <!--        </div>-->
       </div>
       <div class="top-address">
-        <div class="top-address--time">Работаем с понедельника по пятницу 8:00 - 18:00</div>
+        <div class="top-address--time">{{ $t('business_hours') }}</div>
         <div class="top-address--address">
-          г. Санкт Петербург, Ленинский проспект, д.153, 196247
+          {{ $t('address') }}
         </div>
       </div>
     </div>
@@ -31,10 +28,10 @@
       <div class="year">rta {{ year }}</div>
       <div class="author">
         <div class="author--link">
-          <NuxtLink class="group transition duration-300" :to=ag.to target="_blank">
+          <NuxtLink :to=ag.to class="group transition duration-300" target="_blank">
             <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sec"></span>
             <div>
-              Сайт разработан AGMO_studio
+              {{ $t('devs') }}
             </div>
             <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sec"></span>
           </NuxtLink>
@@ -44,17 +41,18 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import LogoEn from '~/assets/icons/logo_en.png'
-import SocialButtonsGroup from '~/components/SocialButtonsGroup.vue'
+import { useLocalePath } from '#i18n'
 
+const localPath = useLocalePath()
 const year = new Date().getFullYear()
 
 const ag = ref(
   { to: 'https://t.me/Artemoniuss' },
 )
 
-const policyLink = ref({ name: 'политика конфиденциальности', to: '/privacy_policy' })
+const policyLink = ref({ name: 'policy_link', to: '/privacy_policy' })
 
 </script>
 
@@ -72,7 +70,7 @@ const policyLink = ref({ name: 'политика конфиденциально�
 
     .top-about {
       @apply h-full;
-      @apply flex flex-col justify-between items-center xs:items-start gap-2;
+      @apply flex flex-col justify-between items-center gap-2;
 
       &--image {
 

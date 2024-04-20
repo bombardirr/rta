@@ -4,20 +4,19 @@
   </Button>
   <Dialog
     v-model:visible="visibleDialog"
-    modal
-    header="Отправить e-mail"
+    :header=$t(modalData.label)
     class="dialog"
-    :style="{width: '32rem'}"
+    modal
   >
-    <form class="form" ref="form" @submit.prevent="sendEmail">
+    <form ref="form" class="form" @submit.prevent="sendEmail">
       <div>
         <i class="pi pi-user" />
         <InputText
           id="username"
           v-model="from_name"
-          class="inputText"
+          :placeholder=$t(modalData.name)
           autocomplete="off"
-          placeholder="Введите имя..."
+          class="inputText"
           name="from_name"
         />
       </div>
@@ -26,9 +25,9 @@
         <InputText
           id="tel"
           v-model="from_tel"
-          class="inputText"
+          :placeholder=$t(modalData.phone)
           autocomplete="off"
-          placeholder="Введите телефон..."
+          class="inputText"
           name="from_tel"
         />
       </div>
@@ -37,48 +36,59 @@
         <Textarea
           id="message"
           v-model="message"
-          class="inputText inputLast"
+          :placeholder=$t(modalData.text)
           autocomplete="off"
-          placeholder="Введите текст..."
-          rows="3"
+          class="inputText inputLast"
           name="message"
+          rows="3"
         />
       </div>
       <MainButton
-        class="submit-button"
         v-for="setting in buttonSettings"
         :key="setting.label"
-        type="submit"
-        :label="setting.label"
         :icon="setting.icon"
+        :label="$t(setting.label)"
+        class="submit-button"
+        type="submit"
       />
     </form>
     <div class="policy">
-      <NuxtLink :to="policyLink.to" target="_blank">{{ policyLink.name }}</NuxtLink>
+      <NuxtLink :to="localPath(policyLink.to)" target="_blank">{{ $t(policyLink.name) }}</NuxtLink>
     </div>
     <transition name="fade">
-      <p v-if="emailSentMessage" class="email-message">{{ emailSentMessage }}</p>
+      <p v-if="emailSentMessage" class="sent-message">{{ $t(emailSentMessage) }}</p>
     </transition>
   </Dialog>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 import emailjs from '@emailjs/browser'
 import Dialog from 'primevue/dialog'
 import InputText from 'primevue/inputtext'
 import Textarea from 'primevue/textarea'
+import { useLocalePath } from '#i18n'
+
+const localPath = useLocalePath()
 
 const visibleDialog = ref(false)
 const emailSentMessage = ref('')
 
+const modalData = ref(
+  {
+    label: 'email-form_header',
+    name: 'email-form_name',
+    phone: 'email-form_phone',
+    text: 'email-form_text',
+  },
+)
 
 const buttonSettings = ref([
-    { label: 'Отправить', icon: 'pi pi-envelope' },
+    { label: 'send', icon: 'pi pi-envelope' },
   ],
 )
 
 const policyLink = ref({
-  name: 'Нажимая на кнопку «отправить» вы соглашаетесь с политикой конфиденциальности',
+  name: 'disclaimer',
   to: '/privacy_policy',
 })
 
@@ -95,7 +105,7 @@ const sendEmail = () => {
     })
     .then(
       () => {
-        emailSentMessage.value = 'Информация успешно отправлена!'
+        emailSentMessage.value = 'email_sent_success'
         resetFormFields()
         setTimeout(() => {
           emailSentMessage.value = ''
@@ -103,7 +113,7 @@ const sendEmail = () => {
         }, 2000)
       },
       (error) => {
-        emailSentMessage.value = 'Попробуй ещё раз :('
+        emailSentMessage.value = 'email_sent_fail'
         setTimeout(() => {
           emailSentMessage.value = ''
           visibleDialog.value = false
@@ -124,11 +134,12 @@ const resetFormFields = () => {
   @apply px-3 py-0 flex justify-center items-center;
 
   & > i {
-    @apply text-base xs:text-2xl;
+    @apply text-base xs:text-2xl md:text-4xl;
   }
 }
 
 .dialog {
+  @apply w-80 xs:w-96;
 
   .form {
     @apply flex flex-col justify-evenly items-start gap-2;
@@ -155,7 +166,7 @@ const resetFormFields = () => {
   }
 
   .policy {
-    @apply text-sec text-[.7rem] text-nowrap mt-2;
+    @apply text-sec text-[.7rem] mt-2;
   }
 
   .submit-button {
@@ -173,7 +184,7 @@ const resetFormFields = () => {
     }
   }
 
-  .email-message {
+  .sent-message {
     @apply mt-2;
     @apply text-center;
   }

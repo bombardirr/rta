@@ -31,7 +31,6 @@ const chosenLanguage = computed({
 
 <style lang="scss">
 .lang-container {
-  @apply bg-[#F0F0F0];
 }
 
 </style>

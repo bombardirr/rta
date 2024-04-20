@@ -23,17 +23,19 @@ import Docs from '~/components/Docs.vue'
   @apply flex flex-col justify-center items-center;
   @apply relative;
   @apply w-full;
+  @apply pt-8;
 
   .services {
-    @apply w-full min-h-[40lvh] xs:min-h-[80lvh];
+    @apply w-full h-fit;
   }
 
   .hero {
-    @apply w-full min-h-[40lvh] xs:min-h-[80lvh];
+    @apply w-full h-fit;
+    @apply flex flex-col justify-center items-center;
   }
 
   .docsBlock {
-    @apply w-full min-h-[40lvh] xs:min-h-[80lvh];
+    @apply w-full h-fit;
     @apply flex flex-col justify-center items-center;
   }
 }

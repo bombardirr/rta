@@ -1,28 +1,26 @@
 <template>
   <div
-    class="aboutCard-container"
     v-if="order === 1"
+    class="aboutCard-container"
   >
-    <div class="aboutCard-container--image">
+    <div class="aboutCard-container--image cont">
       <img :src=src alt="">
     </div>
-    <div class="aboutCard-container--text">
-      <div class="text-title">{{ title }}</div>
-      <div class="text-body">{{ text }}</div>
+    <div class="aboutCard-container--text cont">
+      {{ title }}
     </div>
   </div>
-  <div class="aboutCard-container" v-else>
-    <div class="aboutCard-container--text">
-      <div class="text-title">{{ title }}</div>
-      <div class="text-body">{{ text }}</div>
+  <div v-else class="aboutCard-container">
+    <div class="aboutCard-container--text cont">
+      {{ title }}
     </div>
-    <div class="aboutCard-container--image">
+    <div class="aboutCard-container--image cont">
       <img :src=src alt="">
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 
 defineProps({
     src: {
@@ -30,10 +28,6 @@ defineProps({
       default: undefined,
     },
     title: {
-      type: String,
-      default: undefined,
-    },
-    text: {
       type: String,
       default: undefined,
     },
@@ -48,32 +42,28 @@ defineProps({
 
 <style lang="scss">
 .aboutCard-container {
-  @apply grid grid-rows-2 justify-end gap-1 items-center mx-[.2rem];
-  @apply text-prime;
-  @apply overflow-hidden;
+  @apply grid grid-rows-2 gap-2;
+  @apply text-prime text-balance text-center font-bold text-[.6rem] xs:text-xs md:text-base lg:text-xl xl:text-2xl;
 
   &--text {
-    @apply lg:px-2 2xl:px-5 z-10 flex flex-col justify-evenly text-xs 2xl:text-sm;
+    @apply flex flex-col justify-center items-center;
     @apply border rounded;
-    @apply h-full w-full;
-
-    .text-title {
-      @apply text-[.5rem] lg:text-xs 2xl:text-sm text-center 2xl:text-start;
-    }
-
-    .text-body {
-      @apply hidden 2xl:block;
-    }
+    @apply p-1;
   }
 
   &--image {
-    @apply z-0 h-full w-full flex flex-col justify-center;
+    @apply flex flex-col justify-center;
     @apply border rounded;
+    @apply p-2;
 
     img {
       @apply rounded;
     }
   }
+}
+
+.cont {
+  @apply w-[80px] xs:w-24 sm:w-28 md:w-36 lg:w-48 xl:w-56;
 }
 
 </style>

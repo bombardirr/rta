@@ -2,37 +2,37 @@
   <div class="services-container">
     <div
       class="services-container--image"
+      data-aos="fade-right"
+      data-aos-delay="300"
+      data-aos-mirror="true"
     >
       <Transition>
         <img
-          v-if="!itemHovered || !itemClicked"
+          v-if="!itemClicked || !itemSelected"
           :src=Map
           alt="Map"
         >
       </Transition>
       <Transition name="slide">
         <div
-          v-if="itemHovered"
+          v-if="itemClicked && itemSelected"
           class="image-info-container"
         >
           <div
-            v-for="test in cardData"
-            :key="test.service"
+            v-for="card in cardData"
+            :key="card.service"
             class="image-info-container--card"
           >
-            <div v-if="test.service === itemHovered" class="card-items">
+            <div v-if="card.service === itemSelected" class="card-items">
               <div class="card-item">
                 <ServiceCard
-                  :textBA="test.data.textBA"
-                  :textBB="test.data.textBB"
-                  :textE="test.data.textE"
-                  :textLA="test.data.textLA"
-                  :textLB="test.data.textLB"
-                  :textLC="test.data.textLC"
-                  :textLD="test.data.textLD"
-                  :textLE="test.data.textLE"
-                  :textLF="test.data.textLF"
-                  :textT="test.data.textT"
+                  :textLA="$t(card.data.textLA)"
+                  :textLB="$t(card.data.textLB)"
+                  :textLC="$t(card.data.textLC)"
+                  :textLD="$t(card.data.textLD)"
+                  :textLE="$t(card.data.textLE)"
+                  :textLF="$t(card.data.textLF)"
+                  :textT="$t(card.data.textT)"
                 />
               </div>
 
@@ -46,12 +46,13 @@
         v-for="item in dataService"
         :key="item.mainTitle"
         class="block-item"
+        data-aos="fade-up"
+        data-aos-delay="500"
+        data-aos-mirror="true"
         @click="handleClick(item.mainTitle)"
-        @mouseenter="handleMouseOver(item.mainTitle)"
-        @mouseleave="handleMouseOver('')"
       >
         <ServiceItem
-          :mainTitle="item.mainTitle"
+          :mainTitle="$t(item.mainTitle)"
           :src="item.src"
         />
       </div>
@@ -70,129 +71,105 @@ import ExportImage from '~/assets/images/export.png'
 import DeclarationImage from '~/assets/images/declaration.png'
 import ServiceCard from '~/components/ServiceCard.vue'
 
-const itemHovered = ref<string | null>(null)
-const handleMouseOver = (mainTitle: string) => {
-  if (!itemHovered.value) {
-    itemHovered.value = mainTitle
-    itemClicked.value = true
-  } else {
-    itemHovered.value = ''
-    itemClicked.value = false
-  }
-}
+const itemSelected = ref<string | null>(null)
 
 const itemClicked = ref(false)
 const handleClick = (mainTitle: string) => {
   if (!itemClicked.value) {
     itemClicked.value = true
-    itemHovered.value = mainTitle
-  } else if (itemHovered.value === mainTitle) {
+    itemSelected.value = mainTitle
+  } else if (itemSelected.value !== mainTitle) {
     itemClicked.value = false
-    itemHovered.value = ''
-  } else {
+    itemSelected.value = mainTitle
+    setTimeout(() => {
+      itemClicked.value = true
+    }, 200)
+  } else if (itemSelected.value === mainTitle) {
     itemClicked.value = false
-    itemHovered.value = ''
+    itemSelected.value = ''
   }
 }
 
 const dataService = ref([
-  { mainTitle: 'Аренда', src: RentImage },
-  { mainTitle: 'Склады', src: WarehouseImage },
-  { mainTitle: 'Экспедирование', src: ForwardingImage },
-  { mainTitle: 'Импорт', src: ImportImage },
-  { mainTitle: 'Экспорт', src: ExportImage },
-  { mainTitle: 'Декларирование', src: DeclarationImage },
+  { mainTitle: 'service_block_a', src: RentImage },
+  { mainTitle: 'service_block_b', src: WarehouseImage },
+  { mainTitle: 'service_block_c', src: ForwardingImage },
+  { mainTitle: 'service_block_d', src: ImportImage },
+  { mainTitle: 'service_block_e', src: ExportImage },
+  { mainTitle: 'service_block_f', src: DeclarationImage },
 ])
 
 const cardData = ref([
   {
-    service: 'Аренда',
+    service: 'service_block_a',
     data: {
-      textT: 'Аренда и продажа контейнеров типа:',
-      textBA: '',
-      textBB: '',
-      textLA: 'Танк',
-      textLB: 'Flat Rack',
-      textLC: 'Open top',
-      textLD: '20DC, 20HC, 40HC',
-      textLE: '',
-      textLF: '',
-      textE: '',
+      textT: 'text_t_a',
+      textLA: 'text_la_a',
+      textLB: 'text_lb_a',
+      textLC: 'text_lc_a',
+      textLD: 'text_ld_a',
+      textLE: 'text_le_a',
+      textLF: 'text_lf_a',
     },
   },
   {
-    service: 'Склады',
+    service: 'service_block_b',
     data: {
-      textT: 'У нас собственные склады, а это:',
-      textBA: '',
-      textBB: '',
-      textLA: 'Ответственное хранение',
-      textLB: 'Оперативная перегрузка',
-      textLC: 'Услуги по обработке',
-      textLD: 'Консолидация и реконсолидация',
-      textLE: 'Утепление контейнеров',
-      textLF: 'Прием и отгрузка понаменклатурно',
-      textE: '',
+      textT: 'text_t_b',
+      textLA: 'text_la_b',
+      textLB: 'text_lb_b',
+      textLC: 'text_lc_b',
+      textLD: 'text_ld_b',
+      textLE: 'text_le_b',
+      textLF: 'text_lf_b',
     },
   },
   {
-    service: 'Экспедирование',
+    service: 'service_block_c',
     data: {
-      textT: 'Наши специалисты обеспечат:',
-      textBA: '',
-      textBB: '',
-      textLA: 'Оперативную регистрацию',
-      textLB: 'Сопровождение',
-      textLC: 'Консультации',
-      textLD: 'Контролироль статуса',
-      textLE: '',
-      textLF: '',
-      textE: '',
+      textT: 'text_t_c',
+      textLA: 'text_la_c',
+      textLB: 'text_lb_c',
+      textLC: 'text_lc_c',
+      textLD: 'text_ld_c',
+      textLE: 'text_le_c',
+      textLF: 'text_lf_c',
     },
   },
   {
-    service: 'Импорт',
+    service: 'service_block_d',
     data: {
-      textT: 'Осуществляем имортные перевозки:',
-      textBA: '',
-      textBB: '',
-      textLA: 'Мультимодальные',
-      textLB: 'Железнодорожные',
-      textLC: 'Морские',
-      textLD: 'Авиа',
-      textLE: 'Автомобильные',
-      textLF: '',
-      textE: '',
+      textT: 'text_t_d',
+      textLA: 'text_la_d',
+      textLB: 'text_lb_d',
+      textLC: 'text_lc_d',
+      textLD: 'text_ld_d',
+      textLE: 'text_le_d',
+      textLF: 'text_lf_d',
     },
   },
   {
-    service: 'Экспорт',
+    service: 'service_block_e',
     data: {
-      textT: 'Экспорт с нами - это:',
-      textBA: '',
-      textBB: '',
-      textLA: 'Грузоперевозки в более чем 50 стран мира',
-      textLB: 'Оперативная подготовка к отправке',
-      textLC: 'Весь документооюорот',
-      textLD: 'Формирование оптимального маршрута',
-      textLE: '',
-      textLF: '',
-      textE: '',
+      textT: 'text_t_e',
+      textLA: 'text_la_e',
+      textLB: 'text_lb_e',
+      textLC: 'text_lc_e',
+      textLD: 'text_ld_e',
+      textLE: 'text_le_e',
+      textLF: 'text_lf_e',
     },
   },
   {
-    service: 'Декларирование',
+    service: 'service_block_f',
     data: {
-      textT: 'Также мы берём на себя:',
-      textBA: '',
-      textBB: '',
-      textLA: 'Проверку и подготовку документов',
-      textLB: 'Классификацию товаров по ТН ВЭД',
-      textLC: 'Определение таможенной стоимости',
-      textLD: 'Расчёт и уплату сборов и налогов',
-      textLE: 'Экспортную и импортную декларации',
-      textLF: 'Межведомственное взаимодействие',
-      textE: '',
+      textT: 'text_t_f',
+      textLA: 'text_la_f',
+      textLB: 'text_lb_f',
+      textLC: 'text_lc_f',
+      textLD: 'text_ld_f',
+      textLE: 'text_le_f',
+      textLF: 'text_lf_f',
     },
   },
 ])
@@ -201,13 +178,13 @@ const cardData = ref([
 
 <style lang="scss">
 .services-container {
-  @apply grid grid-cols-1 grid-rows-2 xs:grid-cols-6 xs:grid-rows-3 xs:justify-items-center xs:gap-4;
+  @apply grid grid-cols-1 grid-rows-2 lg:grid-cols-3 lg:grid-rows-1;
   @apply bg-gradient-to-r from-[#4c956c] to-[#0079A2];
   @apply text-prime text-pretty;
   @apply p-4;
 
   &--image {
-    @apply xs:col-span-4 xs:row-span-3;
+    @apply lg:col-span-2;
     @apply flex flex-col justify-center items-center;
     @apply relative;
 
@@ -216,10 +193,11 @@ const cardData = ref([
     }
 
     .image-info-container {
-      @apply absolute;
       @apply flex flex-col justify-center items-center;
+      @apply absolute;
 
       &--card {
+        @apply xs:text-lg sm:text-2xl md:text-3xl;
 
         .card-items {
 
@@ -231,11 +209,11 @@ const cardData = ref([
   }
 
   &--blocks {
-    @apply grid grid-cols-3 grid-rows-2 gap-2;
-    @apply text-xs;
+    @apply grid grid-cols-3 grid-rows-2 gap-2 lg:grid-cols-2;
+    @apply text-xs font-bold;
 
     .block-item {
-      @apply xs:flex-col xs:justify-center items-center;
+      @apply flex-col justify-center items-center;
       @apply hover:grayscale;
     }
   }

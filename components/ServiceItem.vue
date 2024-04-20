@@ -32,10 +32,11 @@ defineProps({
   @apply p-2 xs:p-4;
 
   &--title {
-    @apply xs:text-2xl;
+    @apply xs:text-sm sm:text-lg md:text-2xl lg:text-xl xl:text-xl 2xl:text-2xl;
   }
 
   &--image {
+    @apply 2xl:w-40;
   }
 }
 

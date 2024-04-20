@@ -15,7 +15,7 @@
         <p class="hidden xs:block lg:hidden">
           {{ textB }}
         </p>
-        <p class="sm:hidden">
+        <p class="xs:hidden">
           {{ textC }}
         </p>
       </div>
@@ -23,7 +23,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts" setup>
 
 defineProps({
   title: {
@@ -53,7 +53,7 @@ defineProps({
   &--text {
     @apply flex flex-1 flex-col justify-evenly items-start gap-2;
     @apply pl-5;
-    @apply text-xs sm:text-sm md:text-base;
+    @apply text-xs xs:text-sm sm:text-lg md:text-xl lg:text-3xl 2xl:text-3xl;
 
     .slogan {
       @apply text-prime;
@@ -63,7 +63,6 @@ defineProps({
     }
 
     .history {
-
     }
 
   }
