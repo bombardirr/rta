@@ -49,7 +49,7 @@ defineProps({
 
 <style lang="scss">
 .docCard-container {
-  @apply text-xl;
+  @apply text-xs xs:text-sm md:text-base lg:text-xl xl:text-2xl;
 
   &--image {
 
