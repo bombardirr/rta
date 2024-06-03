@@ -52,7 +52,7 @@ import Footer from '~/components/Footer.vue'
   }
 
   .slot-container {
-    @apply mx-auto;
+    @apply mx-auto container;
     @apply flex flex-col justify-start items-center gap-2;
   }
 }

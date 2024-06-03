@@ -6,6 +6,7 @@
       class="docs-container--cards"
       data-aos="fade-up"
       data-aos-delay="150"
+      data-aos-mirror="true"
     >
       <DocItem
         v-for="item in dataDoc"
@@ -56,7 +57,6 @@ const dataDoc = ref([
 
 <style lang="scss">
 .docs-container {
-  @apply bg-gradient-to-r from-[#4c956c] to-[#0079A2];
   @apply container;
   @apply p-4;
 

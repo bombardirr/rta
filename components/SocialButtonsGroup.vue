@@ -1,12 +1,16 @@
 <template>
   <div class="social-group">
-    <MainButton
+    <NuxtLink
       v-for="setting in buttonSettings"
       :key="setting.icon"
-      :class="setting.class"
-      :icon="setting.icon"
-      class="social-button"
-    />
+      :to="setting.to"
+    >
+      <MainButton
+        :class="setting.class"
+        :icon="setting.icon"
+        class="social-button"
+      />
+    </NuxtLink>
     <NuxtLink :to="'/'">
       <font-awesome :icon="faWeixin" class="wechat" />
     </NuxtLink>
@@ -18,8 +22,8 @@ import MainButton from '~/components/MainButton.vue'
 import { faWeixin } from '@fortawesome/free-brands-svg-icons'
 
 const buttonSettings = ref([
-    { raised: true, icon: 'pi pi-telegram', rounded: true, class: 'telegram' },
-    { raised: true, icon: 'pi pi-whatsapp', rounded: true, class: 'whatsapp' },
+    { raised: true, icon: 'pi pi-telegram', rounded: true, class: 'telegram', to: 'https://t.me/Yan_Zhukov' },
+    { raised: true, icon: 'pi pi-whatsapp', rounded: true, class: 'whatsapp', to: 'https://wa.me/79218928422' },
   ],
 )
 

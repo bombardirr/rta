@@ -6,7 +6,6 @@
       class="hero-container--image"
       data-aos="zoom-in"
       data-aos-mirror="true"
-      data-aos-offset="-150"
     >
       <img :src=BossImage alt="Boss Image" />
     </div>
@@ -15,7 +14,6 @@
       data-aos='zoom-in'
       data-aos-delay="300"
       data-aos-mirror="true"
-      data-aos-offset="-150"
     >
       <HeroBlockA
         :textA="$t(dataA.textA)"
@@ -29,7 +27,6 @@
       data-aos="zoom-in"
       data-aos-delay="300"
       data-aos-mirror="true"
-      data-aos-offset="-350"
     >
       <HeroBlockB
         v-for="item in dataB"
@@ -42,7 +39,7 @@
 </template>
 
 <script lang="ts" setup>
-import BossImage from '~/assets/images/boss.jpg'
+import BossImage from '~/assets/images/boss.png'
 import HeroBlockA from '~/components/HeroBlockA.vue'
 import HeroBlockB from '~/components/HeroBlockB.vue'
 import FeedbackImage from '~/assets/icons/feedback.png'
@@ -90,7 +87,6 @@ const dataB = ref([
 <style lang="scss">
 .hero-container {
   @apply grid grid-cols-3 grid-rows-3 gap-2;
-  @apply bg-gradient-to-r from-[#4c956c] to-[#0079A2];
   @apply text-prime text-pretty;
   @apply p-2;
   @apply container;

@@ -179,7 +179,6 @@ const cardData = ref([
 <style lang="scss">
 .services-container {
   @apply grid grid-cols-1 grid-rows-2 lg:grid-cols-3 lg:grid-rows-1;
-  @apply bg-gradient-to-r from-[#4c956c] to-[#0079A2];
   @apply text-prime text-pretty;
   @apply p-4;
 

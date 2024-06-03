@@ -15,7 +15,7 @@
       <div class="top-details">
         <div class="top-details--title">{{ $t('company_full_name') }}</div>
         <div class="top-details--phone"><a href="tel:'+7-812-740-34-44'">+7-812-740-34-44</a></div>
-        <div class="top-details--mail"><a href="mailto:'info@rtarus.com'">info@rtarus.com</a></div>
+        <div class="top-details--mail"><a href="mailto:'office@rtarus.com'">office@rtarus.com</a></div>
       </div>
       <div class="top-address">
         <div class="top-address--time">{{ $t('business_hours') }}</div>
@@ -78,11 +78,9 @@ const policyLink = ref({ name: 'policy_link', to: '/privacy_policy' })
           @apply w-48;
           @apply my-2;
           @apply transform -translate-y-[.1rem];
-          //@apply shadow-md shadow-black/60;
           @apply transition-all ease-in-out rounded-md;
           &:hover {
             @apply transform translate-y-0.5;
-            //@apply shadow shadow-black/10;
           }
         }
       }
@@ -94,30 +92,11 @@ const policyLink = ref({ name: 'policy_link', to: '/privacy_policy' })
 
     .top-details {
       @apply flex flex-col justify-between items-center xs:items-start gap-2;
-
-      &--title {
-
-      }
-
-      &--phone {
-
-      }
-
-      &--mail {
-
-      }
     }
 
     .top-address {
       @apply flex flex-col justify-start items-center xs:items-start gap-2;
       @apply text-wrap;
-
-      &--time {
-
-      }
-
-      &--address {
-      }
     }
   }
 
@@ -129,12 +108,6 @@ const policyLink = ref({ name: 'policy_link', to: '/privacy_policy' })
     .year {
       @apply border-r-2 pr-2;
       @apply uppercase;
-    }
-
-    .author {
-
-      &--link {
-      }
     }
   }
 }

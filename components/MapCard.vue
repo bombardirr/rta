@@ -22,11 +22,11 @@
     </a>
     <a
       class="map-card--item"
-      href="mailto:'info@rtarus.com'"
+      href="mailto:'office@rtarus.com'"
     >
       <div class="pi pi-envelope" />
       <div class="item-text">
-        info@rtarus.com
+        office@rtarus.com
       </div>
     </a>
   </div>

@@ -26,16 +26,16 @@ import Docs from '~/components/Docs.vue'
   @apply pt-8;
 
   .services {
-    @apply w-full h-fit;
+    @apply w-full h-[30rem] xs:h-[35rem] sm:h-[45rem] md:h-[55rem] lg:h-[40rem] xl:h-[50rem];
   }
 
   .hero {
-    @apply w-full h-fit;
+    @apply w-full h-[25rem] xs:h-[35rem] sm:h-[45rem] md:h-[55rem] lg:h-[40rem] xl:h-[50rem];
     @apply flex flex-col justify-center items-center;
   }
 
   .docsBlock {
-    @apply w-full h-fit;
+    @apply w-full h-[20rem] xs:h-[20rem] sm:h-[25rem] md:h-[20rem] lg:h-[40rem] xl:h-[50rem];
     @apply flex flex-col justify-center items-center;
   }
 }

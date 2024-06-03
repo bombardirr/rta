@@ -100,7 +100,7 @@ const form = ref<HTMLFormElement | null>(null)
 const sendEmail = () => {
   if (!form.value) return
   emailjs
-    .sendForm('service_e3sh6gq', 'template_6zwemvv', form.value, {
+    .sendForm('service_vzwgi1c', 'template_6zwemvv', form.value, {
       publicKey: 'GLh62ap00g61n22cV',
     })
     .then(
